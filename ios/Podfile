@@ -13,6 +13,8 @@ target 'androidMoeTest' do
   )
 
 
+  pod 'ReactNativeMoEngage', :path => '../node_modules/react-native-moengage'
+
   target 'androidMoeTestTests' do
     inherit! :complete
     # Pods for testing

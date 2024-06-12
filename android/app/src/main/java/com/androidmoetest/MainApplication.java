@@ -11,6 +11,10 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import com.moengage.react.MoEReactPackage;
+import com.moengage.core.DataCenter;
+import com.moengage.core.MoEngage;
+import com.moengage.react.MoEInitializer;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -27,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+          packages.add(new MoEReactPackage());
           return packages;
         }
 
@@ -46,6 +51,8 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+    MoEngage.Builder moEngage = new MoEngage.Builder(this, "APP_ID", DataCenter.DATA_CENTER_1);
+    MoEInitializer.INSTANCE.initializeDefaultInstance(getApplicationContext(), moEngage);
   }
 
   /**

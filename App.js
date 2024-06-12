@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -17,6 +17,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import ReactMoE from 'react-native-moengage';
 
 import {
   Colors,
@@ -58,6 +59,9 @@ const App: () => Node = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+  useEffect(() => {
+    ReactMoE.initialize('APP_ID');
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
